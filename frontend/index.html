@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Naftelia | Ocean Intelligence for Every Captain</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+    <link rel="stylesheet" href="/src/styles.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" defer></script>
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <script src="https://cdn.auth0.com/js/auth0-spa-js/2.1/auth0-spa-js.production.js" defer></script>
+  </head>
+  <body>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <header class="site-header" data-page-shell="marketing">
+      <a class="brand" href="#landing" data-page-link="landing" aria-label="Naftelia home">
+        <span class="brand-mark"><i data-lucide="ship-wheel"></i></span>
+        <span>
+          <small>Maritime Intelligence</small>
+          <strong>Naftelia</strong>
+        </span>
+      </a>
+      <nav class="desktop-nav" aria-label="Primary">
+        <a href="#services" data-scroll-link="services">Services</a>
+        <a href="#how" data-scroll-link="how">How it Works</a>
+        <a href="#pricing" data-scroll-link="pricing">Pricing</a>
+        <a href="#developers" data-page-link="developers">About Developers</a>
+      </nav>
+      <div class="header-actions">
+        <button class="btn ghost" data-page-link="login">Sign In</button>
+        <button class="btn gold" data-page-link="signup">Get Started</button>
+        <button class="icon-btn menu-toggle" id="menuToggle" aria-label="Open menu"><i data-lucide="menu"></i></button>
+      </div>
+      <nav class="mobile-nav" id="mobileNav" aria-label="Mobile">
+        <a href="#services" data-scroll-link="services">Services</a>
+        <a href="#how" data-scroll-link="how">How it Works</a>
+        <a href="#pricing" data-scroll-link="pricing">Pricing</a>
+        <a href="#developers" data-page-link="developers">About Developers</a>
+        <button class="btn ghost" data-page-link="login">Sign In</button>
+        <button class="btn gold" data-page-link="signup">Get Started</button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page active" id="page-landing">
+        <section class="hero">
+          <div class="hero-bg"></div>
+          <div class="hero-overlay"></div>
+          <div class="float-icon anchor"><i data-lucide="anchor"></i></div>
+          <div class="float-icon compass"><i data-lucide="compass"></i></div>
+          <div class="hero-copy reveal">
+            <p class="script">Navigation made human</p>
+            <h1>Naftelia</h1>
+            <p class="hero-pitch">Commercial fleets have ocean scientists. We gave that to everyone else.</p>
+            <div class="hero-actions">
+              <button class="btn gold large" data-page-link="signup"><i data-lucide="anchor"></i> Start Free</button>
+              <button class="btn glass large" data-page-link="app"><i data-lucide="play"></i> Open Demo</button>
+            </div>
+          </div>
+          <div class="hero-status reveal delay-2">
+            <span class="status-dot"></span>
+            <span>Live route preview ready for Tofino coastal waters</span>
+          </div>
+        </section>
+
+        <section class="section intro-band">
+          <div class="section-heading reveal">
+            <p class="script">For any vessel</p>
+            <h2>Affordable ocean intelligence for captains, crews, and coastal communities.</h2>
+            <p>Naftelia turns weather, sea state, vessel profile, and destination risk into simple voyage guidance that works before and after you leave signal.</p>
+          </div>
+          <div class="vessel-strip reveal delay-1">
+            <span><i data-lucide="fish"></i> Fishing Boats</span>
+            <span><i data-lucide="sailboat"></i> Sailboats</span>
+            <span><i data-lucide="ship"></i> Yachts</span>
+            <span><i data-lucide="container"></i> Commercial</span>
+          </div>
+        </section>
+
+        <section class="section services" id="services">
+          <div class="section-heading reveal">
+            <p class="script">Services</p>
+            <h2>Everything a captain checks before leaving dock.</h2>
+          </div>
+          <div class="card-grid three">
+            <article class="feature-card reveal">
+              <img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=900&q=80" alt="Ocean surface from above" />
+              <div>
+                <span class="eyebrow">Ocean Conditions</span>
+                <h3>Sea, wind, and route risk</h3>
+                <p>See current sea temperature, wind, waves, and caution zones in one readable captain view.</p>
+                <button class="text-btn" data-page-link="app">View dashboard <i data-lucide="arrow-right"></i></button>
+              </div>
+            </article>
+            <article class="feature-card reveal delay-1">
+              <img src="https://images.unsplash.com/photo-1528154291023-a6525fabe5b4?auto=format&fit=crop&w=900&q=80" alt="Boat wake on open water" />
+              <div>
+                <span class="eyebrow">Gemini Routing</span>
+                <h3>Plain-language recommendations</h3>
+                <p>Gemini translates complex marine data into simple instructions: where to go, why, and what to watch.</p>
+                <button class="text-btn" data-action="refresh-route">Generate route <i data-lucide="sparkles"></i></button>
+              </div>
+            </article>
+            <article class="feature-card reveal delay-2">
+              <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80" alt="Coastal dock at sunset" />
+              <div>
+                <span class="eyebrow">Offline Mode</span>
+                <h3>Download before departure</h3>
+                <p>Save the route, map, and checks while still on WiFi, then keep navigating at sea without signal.</p>
+                <button class="text-btn" data-action="download-offline">Download demo <i data-lucide="download"></i></button>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="stats-band">
+          <div class="stat reveal">
+            <strong>$12</strong>
+            <span>Pro plan target price</span>
+          </div>
+          <div class="stat reveal delay-1">
+            <strong>0</strong>
+            <span>Signal needed offshore</span>
+          </div>
+          <div class="stat reveal delay-2">
+            <strong>24h</strong>
+            <span>Downloaded route window</span>
+          </div>
+        </section>
+
+        <section class="section split-section" id="how">
+          <div class="split-image reveal">
+            <img src="https://images.unsplash.com/photo-1520942702018-0862200e6873?auto=format&fit=crop&w=1200&q=80" alt="Boat on blue water" />
+          </div>
+          <div class="split-copy reveal delay-1">
+            <p class="script">How it Works</p>
+            <h2>Four simple steps before every voyage.</h2>
+            <div class="step-list">
+              <div class="step"><span>1</span><div><h3>Choose your vessel</h3><p>Select fishing boat, yacht, sailboat, or commercial vessel so the advice matches your trip.</p></div></div>
+              <div class="step"><span>2</span><div><h3>Check the water</h3><p>Naftelia reads marine conditions and shows the important changes in simple language.</p></div></div>
+              <div class="step"><span>3</span><div><h3>Get a route</h3><p>Gemini creates a clear recommendation with distance, direction, confidence, and safety notes.</p></div></div>
+              <div class="step"><span>4</span><div><h3>Save it offline</h3><p>Download the route and map before leaving dock, then use it all day at sea.</p></div></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section pricing" id="pricing">
+          <div class="section-heading reveal">
+            <p class="script">Pricing</p>
+            <h2>Start free. Upgrade only when the voyage demands more.</h2>
+          </div>
+          <div class="pricing-grid">
+            <article class="price-card reveal">
+              <span class="eyebrow">Free</span>
+              <h3>$0</h3>
+              <p>Perfect for hackathon demo, community routes, and basic marine intelligence.</p>
+              <ul>
+                <li><i data-lucide="check"></i> Daily route recommendation</li>
+                <li><i data-lucide="check"></i> Offline map download</li>
+                <li><i data-lucide="check"></i> 24-hour offline voyage pack</li>
+              </ul>
+              <button class="btn navy full" data-page-link="signup">Create Free Account</button>
+            </article>
+            <article class="price-card featured reveal delay-1">
+              <span class="eyebrow">Pro Placeholder</span>
+              <h3>$12/mo</h3>
+              <p>Payment is intentionally not implemented yet. This page stays as a visual placeholder.</p>
+              <ul>
+                <li><i data-lucide="check"></i> Hourly route refreshes</li>
+                <li><i data-lucide="check"></i> AIS traffic layer</li>
+                <li><i data-lucide="check"></i> Advanced traffic and hazard layers</li>
+              </ul>
+              <button class="btn gold full" data-page-link="payment">View Placeholder</button>
+            </article>
+          </div>
+        </section>
+
+        <section class="cta-section">
+          <div class="cta-inner reveal">
+            <p class="script">Set sail with confidence</p>
+            <h2>Your next voyage starts with better intelligence.</h2>
+            <button class="btn gold large" data-page-link="signup"><i data-lucide="user-plus"></i> Create Free Account</button>
+          </div>
+        </section>
+
+        <footer class="footer">
+          <div class="footer-grid">
+            <div>
+              <a class="brand footer-brand" href="#landing" data-page-link="landing">
+                <span class="brand-mark"><i data-lucide="ship-wheel"></i></span>
+                <span><small>Maritime Intelligence</small><strong>Naftelia</strong></span>
+              </a>
+              <p>Commercial-grade ocean intelligence for every captain, powered by marine data and Gemini.</p>
+            </div>
+            <div>
+              <h4>Explore</h4>
+              <a href="#landing" data-page-link="landing">Home</a>
+              <a href="#services" data-scroll-link="services">Services</a>
+              <a href="#how" data-scroll-link="how">How it Works</a>
+              <a href="#developers" data-page-link="developers">About Developers</a>
+            </div>
+            <div>
+              <h4>Account</h4>
+              <a href="#login" data-page-link="login">Sign In</a>
+              <a href="#signup" data-page-link="signup">Register</a>
+              <a href="#payment" data-page-link="payment">Upgrade Placeholder</a>
+              <a href="#app" data-page-link="app">Open App</a>
+            </div>
+            <div>
+              <h4>Contact</h4>
+              <a href="mailto:tanveersinghjandu.dev@gmail.com">tanveersinghjandu.dev@gmail.com</a>
+              <span>Waterloo, Ontario, Canada</span>
+              <span>NOAA, Copernicus, Gemini ready</span>
+            </div>
+          </div>
+          <div class="footer-bottom">Copyright 2026 Naftelia. All Rights Reserved. <button data-page-link="privacy">Privacy</button> <button data-page-link="terms">Terms</button></div>
+        </footer>
+      </section>
+
+      <section class="page auth-page" id="page-login">
+        <div class="auth-art">
+          <button class="icon-btn back-home" data-page-link="landing"><i data-lucide="arrow-left"></i></button>
+          <div>
+            <p class="script">Welcome back</p>
+            <h2>Bring your voyage plan back on deck.</h2>
+            <p>Sign in to access saved routes, vessel profiles, offline downloads, and community reports.</p>
+          </div>
+        </div>
+        <div class="auth-card">
+          <div class="auth-header">
+            <span class="brand-mark"><i data-lucide="ship-wheel"></i></span>
+            <h1>Sign in to Naftelia</h1>
+            <p>Secured by Auth0 when configured. Demo login opens the app instantly.</p>
+          </div>
+          <form id="loginForm" class="form">
+            <label>Email<input type="email" name="email" placeholder="captain@example.com" required /></label>
+            <label>Password<input type="password" name="password" placeholder="Enter your password" required /></label>
+            <button class="btn navy full" type="submit"><i data-lucide="log-in"></i> Sign In</button>
+          </form>
+          <button class="btn outline full" data-action="auth0-login"><i data-lucide="shield-check"></i> Continue with Auth0</button>
+          <button class="btn outline full" data-action="social-demo" data-provider="Google"><i data-lucide="mail"></i> Continue with Google</button>
+          <button class="btn outline full" data-action="social-demo" data-provider="Apple"><i data-lucide="apple"></i> Continue with Apple</button>
+          <p class="switch-text">No account yet? <button data-page-link="signup">Create one free</button></p>
+        </div>
+      </section>
+
+      <section class="page auth-page" id="page-signup">
+        <div class="auth-art signup-art">
+          <button class="icon-btn back-home" data-page-link="landing"><i data-lucide="arrow-left"></i></button>
+          <div>
+            <p class="script">Captain onboarding</p>
+            <h2>Tell Naftelia what kind of voyage you run.</h2>
+            <p>The app adapts advice for fishing boats, yachts, sailboats, commercial operators, and recreational crews.</p>
+          </div>
+        </div>
+        <div class="auth-card wide">
+          <div class="signup-steps" aria-label="Signup steps">
+            <button class="step-pill active" data-signup-step="1">Captain</button>
+            <button class="step-pill" data-signup-step="2">Vessel</button>
+            <button class="step-pill" data-signup-step="3">Plan</button>
+          </div>
+          <form id="signupForm" class="form">
+            <div class="signup-step active" data-step="1">
+              <h1>Create your captain profile</h1>
+              <label>Full Name<input name="name" placeholder="Captain name" required /></label>
+              <label>Email<input type="email" name="email" placeholder="captain@example.com" required /></label>
+              <label>Home Port<input name="home_port" placeholder="Waterloo, Tofino, Manila..." required /></label>
+              <button class="btn navy full" type="button" data-next-step="2">Next: vessel</button>
+            </div>
+            <div class="signup-step" data-step="2">
+              <h1>Choose your vessel</h1>
+              <div class="choice-grid" id="vesselChoices">
+                <button type="button" class="choice active" data-value="Fishing Boat"><i data-lucide="fish"></i><span>Fishing Boat</span></button>
+                <button type="button" class="choice" data-value="Yacht"><i data-lucide="ship"></i><span>Yacht</span></button>
+                <button type="button" class="choice" data-value="Sailboat"><i data-lucide="sailboat"></i><span>Sailboat</span></button>
+                <button type="button" class="choice" data-value="Commercial"><i data-lucide="container"></i><span>Commercial</span></button>
+                <button type="button" class="choice" data-value="Recreational"><i data-lucide="waves"></i><span>Recreational</span></button>
+                <button type="button" class="choice" data-value="Patrol"><i data-lucide="shield"></i><span>Patrol</span></button>
+              </div>
+              <input type="hidden" name="vessel_type" value="Fishing Boat" />
+              <div class="two-actions">
+                <button class="btn outline" type="button" data-next-step="1">Back</button>
+                <button class="btn navy" type="button" data-next-step="3">Next: plan</button>
+              </div>
+            </div>
+            <div class="signup-step" data-step="3">
+              <h1>Select a plan</h1>
+              <div class="plan-choices">
+                <button type="button" class="plan-choice active" data-plan="free"><strong>Free</strong><span>Daily route, offline map, safety brief</span></button>
+                <button type="button" class="plan-choice" data-plan="pro"><strong>Pro Placeholder</strong><span>Payment coming later, visual only for now</span></button>
+              </div>
+              <input type="hidden" name="plan" value="free" />
+              <div class="two-actions">
+                <button class="btn outline" type="button" data-next-step="2">Back</button>
+                <button class="btn gold" type="submit"><i data-lucide="check-circle"></i> Create Account</button>
+              </div>
+            </div>
+          </form>
+          <p class="switch-text">Already registered? <button data-page-link="login">Sign in</button></p>
+        </div>
+      </section>
+
+      <section class="page payment-page" id="page-payment">
+        <div class="subpage-nav">
+          <button class="btn ghost" data-page-link="landing"><i data-lucide="arrow-left"></i> Back</button>
+          <strong>Naftelia Pro</strong>
+        </div>
+        <div class="payment-layout">
+          <article class="payment-summary">
+            <p class="script">Payment placeholder</p>
+            <h1>Pro upgrade preview</h1>
+            <p>This screen is intentionally a placeholder. We are not processing money yet, but judges can see how the upgrade path will feel.</p>
+            <div class="savings-card">
+              <span>Projected monthly price</span>
+              <strong>$12</strong>
+              <p>Compared with commercial marine tools that can cost hundreds per month.</p>
+            </div>
+          </article>
+          <article class="payment-card">
+            <h2>Card details disabled</h2>
+            <label>Name on card<input placeholder="Demo only" disabled /></label>
+            <label>Card number<input placeholder="Payment not implemented" disabled /></label>
+            <div class="form-row">
+              <label>Expiry<input placeholder="MM/YY" disabled /></label>
+              <label>CVC<input placeholder="CVC" disabled /></label>
+            </div>
+            <button class="btn gold full" data-action="payment-placeholder"><i data-lucide="lock"></i> Placeholder Only</button>
+            <p>No payment data is collected in this prototype.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="page app-page" id="page-app">
+        <aside class="app-sidebar">
+          <a class="brand" href="#app" data-app-tab="dashboard"><span class="brand-mark"><i data-lucide="ship-wheel"></i></span><span><small>Captain Console</small><strong>Naftelia</strong></span></a>
+          <button class="sidebar-link active" data-app-tab="dashboard"><i data-lucide="layout-dashboard"></i> Dashboard</button>
+          <button class="sidebar-link" data-app-tab="route"><i data-lucide="map"></i> Route</button>
+          <button class="sidebar-link" data-app-tab="planner"><i data-lucide="navigation"></i> Plan Voyage</button>
+          <button class="sidebar-link" data-app-tab="offline"><i data-lucide="download-cloud"></i> Offline</button>
+          <button class="sidebar-link" data-app-tab="settings"><i data-lucide="settings"></i> Settings</button>
+          <button class="sidebar-link" data-page-link="landing"><i data-lucide="log-out"></i> Exit Demo</button>
+        </aside>
+        <div class="app-shell">
+          <header class="app-topbar">
+            <div>
+              <p class="eyebrow">Good morning, Captain</p>
+              <h1 id="appTitle">Dashboard</h1>
+            </div>
+            <div class="topbar-actions">
+              <button class="icon-btn" data-action="refresh-route" aria-label="Refresh route"><i data-lucide="refresh-cw"></i></button>
+              <button class="captain-pill" data-app-tab="settings"><span>TS</span> Capt. Tanveer</button>
+            </div>
+          </header>
+
+          <section class="app-tab active" id="tab-dashboard">
+            <div class="condition-grid">
+              <div class="condition-card"><i data-lucide="thermometer"></i><span>Sea Temp</span><strong id="seaTemp">12.4 C</strong></div>
+              <div class="condition-card"><i data-lucide="wind"></i><span>Wind</span><strong id="windSpeed">18 km/h</strong></div>
+              <div class="condition-card"><i data-lucide="waves"></i><span>Waves</span><strong id="waveHeight">1.1 m</strong></div>
+              <div class="condition-card"><i data-lucide="activity"></i><span>Confidence</span><strong id="routeConfidence">78%</strong></div>
+            </div>
+            <div class="app-grid">
+              <article class="ai-card">
+                <span class="live-badge"><span></span> Gemini AI - route ready</span>
+                <h2>Recommended voyage</h2>
+                <p id="routeSummary">Enter your departure point and destination in Plan Voyage. Naftelia will pull NOAA data and ask Gemini for a conservative 24-hour route.</p>
+                <div class="route-actions">
+                  <button class="btn blue" data-app-tab="route"><i data-lucide="map"></i> View Route</button>
+                  <button class="btn outline-dark" data-action="download-offline"><i data-lucide="download"></i> Download Offline</button>
+                </div>
+              </article>
+              <article class="mini-map-card">
+                <div id="miniMap"></div>
+              </article>
+            </div>
+          </section>
+
+          <section class="app-tab" id="tab-route">
+            <div class="route-layout">
+              <div class="route-map-card"><div id="routeMap"></div></div>
+              <article class="route-steps">
+                <p class="eyebrow">Step by step</p>
+                <h2>Today&apos;s route plan</h2>
+                <ol id="routeSteps">
+                  <li>Leave port early while wind is lower.</li>
+                  <li>Follow the coast northwest and stay inside the marked safe-water band.</li>
+                  <li>Slow near the temperature change and watch for birds, tide lines, or bait movement.</li>
+                  <li>Keep the downloaded route available before leaving signal.</li>
+                </ol>
+                <button class="btn gold full" data-action="download-offline"><i data-lucide="download"></i> Save Route for Offline Use</button>
+              </article>
+            </div>
+          </section>
+
+          <section class="app-tab" id="tab-planner">
+            <div class="section-heading compact">
+              <p class="script">Voyage planner</p>
+              <h2>Plan a safer route</h2>
+              <p>Enter coordinates for your current location and destination. NOAA provides weather and marine observations; Gemini turns them into a captain-readable route.</p>
+            </div>
+            <form id="voyageForm" class="voyage-form">
+              <label>Origin Name<input name="origin_label" value="Port Angeles" required /></label>
+              <label>Origin Latitude<input name="origin_lat" value="48.1181" required /></label>
+              <label>Origin Longitude<input name="origin_lon" value="-123.4307" required /></label>
+              <label>Destination Name<input name="destination_label" value="Friday Harbor" required /></label>
+              <label>Destination Latitude<input name="destination_lat" value="48.5343" required /></label>
+              <label>Destination Longitude<input name="destination_lon" value="-123.0171" required /></label>
+              <label>NOAA CO-OPS Station<input name="station_id" value="9444900" /></label>
+              <label>Departure Time<input name="departure_time" type="datetime-local" /></label>
+              <button class="btn gold" type="submit"><i data-lucide="sparkles"></i> Generate NOAA + Gemini Route</button>
+            </form>
+            <div class="voyage-history" id="voyageHistory"></div>
+          </section>
+
+          <section class="app-tab" id="tab-offline">
+            <div class="offline-panel">
+              <i data-lucide="download-cloud"></i>
+              <h2>Offline voyage pack</h2>
+              <p>Save the route, NOAA snapshot, Gemini briefing, map waypoints, and safety notes before leaving dock. The pack is valid for 24 hours.</p>
+              <div class="progress-bar"><span id="offlineProgress"></span></div>
+              <button class="btn gold" data-action="download-offline">Start Offline Download</button>
+            </div>
+          </section>
+
+          <section class="app-tab" id="tab-settings">
+            <div class="settings-grid">
+              <article class="settings-card">
+                <h2>Vessel Profile</h2>
+                <label>Home Port<input id="settingPort" value="Waterloo, Ontario" /></label>
+                <label>Vessel Type<select id="settingVessel"><option>Fishing Boat</option><option>Yacht</option><option>Sailboat</option><option>Commercial</option></select></label>
+                <button class="btn navy" data-action="save-settings">Save Settings</button>
+              </article>
+              <article class="settings-card">
+                <h2>Security</h2>
+                <p>Auth0 manages login, password reset, and social connections when your tenant keys are added.</p>
+                <button class="btn outline-dark" data-action="auth0-login">Open Auth0 Login</button>
+              </article>
+            </div>
+          </section>
+
+          <nav class="bottom-nav">
+            <button class="active" data-app-tab="dashboard"><i data-lucide="layout-dashboard"></i><span>Home</span></button>
+            <button data-app-tab="route"><i data-lucide="map"></i><span>Route</span></button>
+            <button data-app-tab="planner"><i data-lucide="navigation"></i><span>Plan</span></button>
+            <button data-app-tab="offline"><i data-lucide="download"></i><span>Offline</span></button>
+          </nav>
+        </div>
+      </section>
+
+      <section class="page developers-page" id="page-developers">
+        <div class="subpage-nav">
+          <button class="btn ghost" data-page-link="landing"><i data-lucide="arrow-left"></i> Back</button>
+          <strong>About Developers</strong>
+        </div>
+        <div class="section-heading">
+          <p class="script">The crew</p>
+          <h1>Built by developers who want ocean intelligence to be accessible.</h1>
+        </div>
+        <div class="developer-grid">
+          <article class="developer-card">
+            <div class="avatar">TJ</div>
+            <h2>Tanveer Singh Jandu</h2>
+            <div class="developer-links">
+              <a href="https://www.linkedin.com/in/tanveersinghjandu/" target="_blank" rel="noreferrer"><i data-lucide="linkedin"></i> LinkedIn</a>
+              <a href="https://github.com/Terrysuki106" target="_blank" rel="noreferrer"><i data-lucide="github"></i> GitHub</a>
+            </div>
+          </article>
+          <article class="developer-card">
+            <div class="avatar">IN</div>
+            <h2>Ishaq Ishaq Nasiru</h2>
+            <div class="developer-links">
+              <a href="https://www.linkedin.com/in/ishaq-ishaq-nasiru/" target="_blank" rel="noreferrer"><i data-lucide="linkedin"></i> LinkedIn</a>
+              <a href="https://github.com/Ameer-sys" target="_blank" rel="noreferrer"><i data-lucide="github"></i> GitHub</a>
+            </div>
+          </article>
+          <article class="developer-card">
+            <div class="avatar">KM</div>
+            <h2>Keshav Kumar Markan</h2>
+            <div class="developer-links">
+              <a href="https://www.linkedin.com/in/keshav-kumar-markan-1bb0483a4/" target="_blank" rel="noreferrer"><i data-lucide="linkedin"></i> LinkedIn</a>
+              <a href="https://github.com/marrkann08-max" target="_blank" rel="noreferrer"><i data-lucide="github"></i> GitHub</a>
+            </div>
+          </article>
+          <article class="developer-card">
+            <div class="avatar">IS</div>
+            <h2>Ivan Immanuel Shaji</h2>
+            <div class="developer-links">
+              <a href="https://www.linkedin.com/in/ivan-immanuel-shaji/" target="_blank" rel="noreferrer"><i data-lucide="linkedin"></i> LinkedIn</a>
+              <a href="https://github.com/ivanimmanuel-dev" target="_blank" rel="noreferrer"><i data-lucide="github"></i> GitHub</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="page legal-page" id="page-privacy">
+        <div class="subpage-nav"><button class="btn ghost" data-page-link="landing"><i data-lucide="arrow-left"></i> Back</button><strong>Privacy</strong></div>
+        <article class="legal-card"><h1>Privacy Placeholder</h1><p>Naftelia will protect captain profiles, vessel details, saved routes, and offline voyage packs. Final legal copy will be added before production.</p></article>
+      </section>
+
+      <section class="page legal-page" id="page-terms">
+        <div class="subpage-nav"><button class="btn ghost" data-page-link="landing"><i data-lucide="arrow-left"></i> Back</button><strong>Terms</strong></div>
+        <article class="legal-card"><h1>Terms Placeholder</h1><p>Naftelia is a decision-support tool, not a replacement for captain judgment, local rules, or official marine warnings.</p></article>
+      </section>
+    </main>
+
+    <script type="module" src="/src/api.js"></script>
+    <script type="module" src="/src/app.js"></script>
+  </body>
+</html>
