@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="/src/styles.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" defer></script>
     <script src="https://unpkg.com/lucide@latest" defer></script>
-    <script src="https://cdn.auth0.com/js/auth0-spa-js/2.1/auth0-spa-js.production.js" defer></script>
   </head>
   <body>
     <div id="toast" class="toast" role="status" aria-live="polite"></div>
@@ -227,24 +226,34 @@
           <div>
             <p class="script">Welcome back</p>
             <h2>Bring your voyage plan back on deck.</h2>
-            <p>Sign in to access saved routes, vessel profiles, offline downloads, and community reports.</p>
+            <p>Create your captain profile and connect your vessel for voyage planning.</p>
+          </div>
+        </div>
+        <div class="auth-card">
+          <div class="auth-header">
+            <span class="brand-mark"><i data-lucide="user-plus"></i></span>
+            <h1>Create Your Profile</h1>
+            <p>Demo mode. Enter your details to get started.</p>
+          </div>
+          <form id="signupForm" class="form">
+            <label>Full Name<input type="text" name="fullName" placeholder="Captain Name" required /></label>
+            <label>Email<input type="email" name="email" placeholder="captain@naftelia.local" required /></label>
+            <label>Home Port<input type="text" name="homePort" placeholder="New York, NY" /></label>
+            <button class="btn navy full" type="submit"><i data-lucide="check"></i> Create Profile</button>
+          </form>
+          <p class="switch-text">Already have an account? <button data-page-link="login">Sign in</button></p>
           </div>
         </div>
         <div class="auth-card">
           <div class="auth-header">
             <span class="brand-mark"><i data-lucide="ship-wheel"></i></span>
-            <h1>Sign in to Naftelia</h1>
-            <p>Secured by Auth0 when configured. Demo login opens the app instantly.</p>
+            <h1>Welcome to Naftelia</h1>
+            <p>Sign in to access saved routes, vessel profiles, and voyage planning.</p>
           </div>
           <form id="loginForm" class="form">
-            <label>Email<input type="email" name="email" placeholder="captain@example.com" required /></label>
-            <label>Password<input type="password" name="password" placeholder="Enter your password" required /></label>
             <button class="btn navy full" type="submit"><i data-lucide="log-in"></i> Sign In</button>
           </form>
-          <button class="btn outline full" data-action="auth0-login"><i data-lucide="shield-check"></i> Continue with Auth0</button>
-          <button class="btn outline full" data-action="social-demo" data-provider="Google"><i data-lucide="mail"></i> Continue with Google</button>
-          <button class="btn outline full" data-action="social-demo" data-provider="Apple"><i data-lucide="apple"></i> Continue with Apple</button>
-          <p class="switch-text">No account yet? <button data-page-link="signup">Create one free</button></p>
+          <p class="switch-text">Demo mode is active. Click above to continue.</p>
         </div>
       </section>
 
@@ -436,8 +445,8 @@
               </article>
               <article class="settings-card">
                 <h2>Security</h2>
-                <p>Auth0 manages login, password reset, and social connections when your tenant keys are added.</p>
-                <button class="btn outline-dark" data-action="auth0-login">Open Auth0 Login</button>
+                <p>Demo authentication is active. No external services needed.</p>
+                <button class="btn outline-dark" data-action="demo-login">Continue with Demo</button>
               </article>
             </div>
           </section>

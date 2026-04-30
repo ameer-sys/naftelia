@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 from flask import Flask, g, jsonify, request, send_from_directory
 from flask_cors import CORS
 
-from services.auth0 import require_auth
+from services.auth0 import require_auth, auth_verifier
 from services.db import (
     create_offline_pack,
     create_voyage,
@@ -20,19 +20,13 @@ from services.db import (
 from services.gemini import build_voyage_plan
 from services.noaa import summarize_noaa_conditions
 
-
 BASE_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = BASE_DIR.parent
 FRONTEND_DIR = PROJECT_ROOT / "frontend"
 
-load_dotenv(dotenv_path=BASE_DIR / ".env", override=True)
-load_dotenv(dotenv_path=PROJECT_ROOT / ".env", override=True)
+load_dotenv(BASE_DIR / ".env")
+load_dotenv(PROJECT_ROOT / ".env")
 
-print("BASE_DIR =", BASE_DIR)
-print("ENV PATH =", BASE_DIR / ".env")
-print("ENV EXISTS =", (BASE_DIR / ".env").exists())
-print("ENV TEXT =", (BASE_DIR / ".env").read_text()[:200])
-print("AUTH0_DOMAIN =", os.getenv("AUTH0_DOMAIN"))
 
 def create_app():
     app = Flask(__name__, static_folder=None)
@@ -56,10 +50,8 @@ def create_app():
     def config():
         return jsonify(
             {
-                "auth0Domain": os.getenv("AUTH0_DOMAIN", ""),
-                "auth0ClientId": os.getenv("AUTH0_CLIENT_ID", ""),
-                "auth0Audience": os.getenv("AUTH0_AUDIENCE", ""),
-                "demoAuth": os.getenv("NAFTELIA_DEMO_AUTH", "false").lower() == "true",
+                "demoAuth": True,
+                "demoUser": auth_verifier.demo_claims(),
             }
         )
 
