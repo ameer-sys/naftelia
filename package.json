@@ -1,0 +1,15 @@
+{
+  "name": "naftelia",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npm.cmd --prefix frontend run dev",
+    "build": "npm.cmd --prefix frontend run build",
+    "preview": "npm.cmd --prefix frontend run preview",
+    "backend": "powershell -NoProfile -ExecutionPolicy Bypass -File ./backend/run-server.ps1"
+  },
+  "devDependencies": {
+    "vite": "^7.0.0"
+  }
+}
