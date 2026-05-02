@@ -1,7 +1,7 @@
 {
   "$schema": "https://schema.railpack.com",
-  "provider": "node,python",
-  "buildAptPackages": ["libpq-dev"],
+  "provider": "python",
+  "buildAptPackages": ["libpq-dev", "nodejs", "npm"],
   "cmds": {
     "build": "npm --prefix frontend install && npm --prefix frontend run build && pip install -r backend/requirements.txt"
   },
