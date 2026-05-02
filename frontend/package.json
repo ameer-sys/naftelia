@@ -4,9 +4,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite --host",
-    "build": "vite build",
-    "preview": "vite preview --host"
+    "dev": "npm --prefix frontend run dev",
+    "build": "npm --prefix frontend run build",
+    "preview": "npm --prefix frontend run preview",
+    "backend": "powershell -NoProfile -ExecutionPolicy Bypass -File ./backend/run-server.ps1"
   },
   "devDependencies": {
     "vite": "^7.0.0"
