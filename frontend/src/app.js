@@ -169,7 +169,7 @@ async function handleVoyage(event) {
     showAppTab("route");
     toast("Voyage route created. Save the offline pack before departure.");
   } catch (error) {
-    toast("Route planning failed. Check backend, Auth0, and API key configuration.");
+    toast("Route planning failed. Check backend and Gemini API key configuration.");
   }
 }
 
@@ -227,20 +227,20 @@ async function startOfflineDownload() {
 async function handleLogin(event) {
   event.preventDefault();
   if (window.NafteliaAPI?.login) await window.NafteliaAPI.login();
+  showPage("app");
 }
 
 async function handleSignup(event) {
   event.preventDefault();
   const formData = new FormData(event.currentTarget);
   const profile = {
-    full_name: formData.get("name"),
+    full_name: formData.get("fullName"),
     email: formData.get("email"),
-    home_port: formData.get("home_port"),
-    vessel_type: formData.get("vessel_type"),
-    plan: formData.get("plan"),
+    home_port: formData.get("homePort"),
   };
   sessionStorage.setItem("naftelia-pending-profile", JSON.stringify(profile));
   if (window.NafteliaAPI?.signup) await window.NafteliaAPI.signup();
+  showPage("app");
 }
 
 function bindInteractions() {
@@ -332,8 +332,9 @@ async function handleAction(action) {
     toast("Pro is coming soon. Payment collection is intentionally disabled.");
     return;
   }
-  if (action === "social-demo" || action === "auth0-login") {
+  if (action === "social-demo" || action === "auth0-login" || action === "demo-login") {
     if (window.NafteliaAPI?.login) await window.NafteliaAPI.login();
+    showPage("app");
     return;
   }
   if (action === "save-settings") toast("Settings saved locally. Backend vessel sync is ready through /api/vessels.");
