@@ -29,18 +29,26 @@ load_dotenv(PROJECT_ROOT / ".env")
 
 
 def create_app():
-    app = Flask(__name__, static_folder=None)
+    app = Flask(
+        __name__,
+        static_folder=str(FRONTEND_DIR),
+        static_url_path=""
+    )
     app.config["SECRET_KEY"] = os.getenv("SECRET_KEY", "dev-only-change-me")
+    app.config["JSON_SORT_KEYS"] = False
     CORS(app, resources={r"/api/*": {"origins": os.getenv("CORS_ORIGINS", "*")}})
     init_db()
 
     @app.get("/")
     def index():
         return send_from_directory(FRONTEND_DIR, "index.html")
-
-    @app.get("/src/<path:filename>")
-    def frontend_src(filename):
-        return send_from_directory(FRONTEND_DIR / "src", filename)
+    
+    @app.get("/<path:filename>")
+    def serve_static(filename):
+        """Serve static files from frontend directory."""
+        if filename and "." in filename:
+            return send_from_directory(FRONTEND_DIR, filename)
+        return send_from_directory(FRONTEND_DIR, "index.html")
 
     @app.get("/api/health")
     def health():
