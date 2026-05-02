@@ -3,7 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
+  "workspaces": [
+    "frontend"
+  ],
   "scripts": {
+    "install": "npm --prefix frontend install",
     "dev": "npm --prefix frontend run dev",
     "build": "npm --prefix frontend run build",
     "preview": "npm --prefix frontend run preview"
