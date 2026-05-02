@@ -1,9 +1,10 @@
 {
-"$schema": "https://schema.railpack.com",
-  "providers": ["node", "python"],
+  "$schema": "https://schema.railpack.com",
+  "provider": "node,python",
   "buildAptPackages": ["libpq-dev"],
   "cmds": {
-  "build": "npm install --include=dev && pip install -r backend/requirements.txt && npm run build"  },
+    "build": "npm --prefix frontend install && npm --prefix frontend run build && pip install -r backend/requirements.txt"
+  },
   "deploy": {
     "startCommand": "cd backend && gunicorn -w 4 -b 0.0.0.0:$PORT app:app"
   }
